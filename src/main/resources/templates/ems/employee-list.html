@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="ems/fragments/header :: header('Employee List')"></head>
+<body>
+
+<div class="container mt-4">
+    <h1 class="mb-4">Employee List</h1>
+
+    <a class="btn btn-primary mb-3" th:href="@{/employees/view/add}">Add New Employee</a>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>FirstName</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="emp : ${employees}">
+            <td th:text="${emp.firstName}"></td>
+            <td th:text="${emp.email}"></td>
+            <td th:text="${emp.department}"></td>
+            <td>
+                <a class="btn btn-warning btn-sm" th:href="@{'/employees/view/edit/' + ${emp.email}}">Edit</a>
+                <a class="btn btn-danger btn-sm" th:href="@{'/employees/view/delete/' + ${emp.email}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="ems/fragments/footer :: footer"></div>
+
+</body>
+</html>
