@@ -4,7 +4,7 @@
 
 1. **Bootstrap Integration**
 
-   * Added **Bootstrap v5.3.3** manually under
+   * Added **Bootstrap v5.3.8** manually under
      `src/main/resources/static/css` and `src/main/resources/static/js`
    * Linked Bootstrap files in Thymeleaf templates for responsive UI.
 
@@ -13,7 +13,7 @@
    ```bash
    git status
    git add .
-   git commit -m "Integrated Bootstrap v5.3.3 and finalized UI updates"
+   git commit -m "Integrated Bootstrap v5.3.8 and finalized UI updates"
    ```
 
 3. **Switch to master branch**
@@ -44,4 +44,4 @@
 
 ---
 
-✅ *Bootstrap v5.3.3 successfully integrated and merged into the master branch for production-ready UI.*
+✅ *Bootstrap v5.3.8 successfully integrated and merged into the master branch for production-ready UI.*
