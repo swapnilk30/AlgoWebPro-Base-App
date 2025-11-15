@@ -108,3 +108,106 @@ src/main/java/com/algowebpro/
 ---
 
 ✅ *Bootstrap v5.3.8 successfully integrated and merged into the master branch for production-ready UI.*
+
+---
+
+# 🚀 Features Implemented
+
+## ✅ **1. Global Exception Handling**
+
+A complete centralized exception-handling mechanism using `@RestControllerAdvice`.
+
+**Includes:**
+
+* Custom exceptions:
+
+  * `ResourceNotFoundException`
+  * `ApiException`
+* Standardized API error structure (`ErrorResponse`)
+* Validation, runtime, and business rule handling
+* Detailed logging for debugging
+* Clean JSON error output for frontend consumption
+
+---
+
+## ✅ **2. Pagination & Sorting**
+
+Implemented efficient backend-driven pagination using Spring Data JPA.
+
+**Features:**
+
+* Query params:
+  `pageNumber`, `pageSize`, `sortBy`, `sortDir`
+* Custom `PageableResponse<T>` wrapper
+* Optimized sorting + pagination at DB level
+* Logging for request tracing
+
+**Example API:**
+
+```
+GET /api/v1/employees?pageNumber=0&pageSize=10&sortBy=name&sortDir=asc
+```
+
+---
+
+## ✅ **3. Bootstrap UI Integration**
+
+Fully integrated **Bootstrap 5.3.3** for responsive UI development.
+
+**Done in the project:**
+
+* Added Bootstrap CDN in Thymeleaf template
+* Created reusable layout fragments (`header`, `footer`, `navbar`)
+* Responsive pages for:
+
+  * Employee list
+  * Employee registration form
+  * Dashboard template
+* Integrated with Thymeleaf views
+* Included mobile-friendly layout using Bootstrap grid system
+
+**Benefits:**
+
+* Faster UI development
+* Consistent styling
+* Zero CSS maintenance
+* Works smoothly with Spring MVC + Thymeleaf
+
+---
+
+## 🗂️ Documentation Added
+
+Notes maintained separately for developer reference:
+
+```
+/docs/notes/
+    global-exception-handling.md
+    pagination-sorting.md
+    bootstrap-ui-integration.md
+```
+
+---
+
+## ✔️ Next Features (Optional to Add)
+
+* JWT Authentication (planned)
+* Search + Filters for Employee
+* Docker Configuration
+* Database Migrations with Flyway
+
+---
+
+If you want, I can generate a **fully structured README.md** including:
+
+* Project Overview
+* Features
+* Tech Stack
+* Folder Structure
+* Setup Guide
+* API Documentation
+* Branch Naming Strategy
+* Screenshots (Bootstrap UI)
+* Contribution Guide
+
+Just say **“Generate full README”**.
+
