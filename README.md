@@ -9,17 +9,18 @@ src/main/java/com/algowebpro/
 │			   SwaggerConfig.java
 │
 ├── common/
-│    ├── constants/
-│	  │	   AppConstants.java
+│   ├── constants/
+│	  │	     AppConstants.java
 │	  ├── utils/
-│	  │	   MappingUtil.java
-│    ├── response/
-│    │      ErrorResponse.java
-│    │      ApiResponse.java
-│    │      SuccessResponse.java
+│	  │	     MappingUtil.java
+│   ├── response/
+│   │      ErrorResponse.java
+│   │      ApiResponse.java
+│   │      SuccessResponse.java
+|   |      PageableResponse.java
 │	  ├── exception/
-│    │      GlobalExceptionHandler.java
-│    │      ResourceNotFoundException.java
+│   │      GlobalExceptionHandler.java
+│   │      ResourceNotFoundException.java
 │
 ├── security/
 │    ├── config/
