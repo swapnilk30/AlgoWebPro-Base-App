@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algowebpro.common.response.ApiResponse;
+import com.algowebpro.common.response.PageableResponse;
 import com.algowebpro.ems.dto.EmployeeDto;
 import com.algowebpro.ems.service.EmployeeService;
 
@@ -22,23 +24,42 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/v1/employees")
 @RequiredArgsConstructor
-//@Slf4j
+@Slf4j
 public class EmployeeRestController {
-
-	private static final Logger log = LoggerFactory.getLogger(EmployeeRestController.class);
 
 	private final EmployeeService employeeService;
 
-	@GetMapping
+	// -------------------------
+	// 1. GET ALL (NO PAGINATION)
+	// -------------------------
+	@GetMapping("/all")
 	public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
-		log.info("Received request: GET /api/employees");
+		log.info("Received request: GET /api/employees/all");
 		return ResponseEntity.ok(employeeService.getAllEmployees());
+	}
+
+	// -------------------------
+	// 2. PAGINATION + SORTING
+	// -------------------------
+	@GetMapping
+	public ResponseEntity<ApiResponse<PageableResponse<EmployeeDto>>> getAllEmployees(
+			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size,
+			@RequestParam(defaultValue = "id") String sortBy, @RequestParam(defaultValue = "asc") String sortDir) {
+
+		log.info("API Request: GET /api/v1/employees?page={}&size={}&sortBy={}&sortDir={}", page, size, sortBy,
+				sortDir);
+		PageableResponse<EmployeeDto> response = employeeService.getAllEmployees(page, size, sortBy, sortDir);
+
+		log.info("Employees fetched successfully. Returning {} records.", response.getContent().size());
+
+		return ResponseEntity.ok(ApiResponse.<PageableResponse<EmployeeDto>>builder().success(true)
+				.message("Employees fetched successfully").data(response).build());
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<ApiResponse<EmployeeDto>> getEmployeeById(@PathVariable Long id) {
 		log.info("Received request: GET /api/employees/{}", id);
-		
+
 		EmployeeDto employee = employeeService.getEmployeeById(id);
 
 		ApiResponse<EmployeeDto> response = ApiResponse.<EmployeeDto>builder().success(true)

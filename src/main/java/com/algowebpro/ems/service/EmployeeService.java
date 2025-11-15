@@ -2,11 +2,12 @@ package com.algowebpro.ems.service;
 
 import java.util.List;
 
+import com.algowebpro.common.response.PageableResponse;
 import com.algowebpro.ems.dto.EmployeeDto;
 
 public interface EmployeeService {
 	
-	List<EmployeeDto> getAllEmployees();
+	
 	
 	EmployeeDto getEmployeeById(Long id);
 	
@@ -15,5 +16,9 @@ public interface EmployeeService {
 	EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto);
 	
 	void deleteEmployee(Long id);
+	
+	List<EmployeeDto> getAllEmployees();
+	
+	PageableResponse<EmployeeDto> getAllEmployees(int page, int size, String sortBy, String sortDir);
 
 }
