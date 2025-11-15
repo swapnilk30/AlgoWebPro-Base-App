@@ -43,6 +43,20 @@ src/main/java/com/algowebpro/
 ├── ums/
 │
 └── ems/
+│
+│
+├── docs/
+│   ├── notes/
+│   │    ├── spring-boot-basics.md
+│   │    ├── jwt-authentication.md
+│   │    ├── exception-handling.md
+│   │    ├── lombok-builder.md
+│   │    └── security-config.md
+│   │
+│   └── architecture/
+│        ├── project-structure.md
+│        ├── sequence-diagrams.md
+│        └── api-flow.md
 ```
 
 
