@@ -1,8 +1,5 @@
 package com.algowebpro.common.exception;
 
-import lombok.Builder;
-
-@Builder
 public class ResourceNotFoundException extends RuntimeException {
 
 	public ResourceNotFoundException() {

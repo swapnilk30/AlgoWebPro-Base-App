@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.algowebpro.common.response.ApiResponse;
 import com.algowebpro.ems.dto.EmployeeDto;
 import com.algowebpro.ems.service.EmployeeService;
 
@@ -21,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/v1/employees")
 @RequiredArgsConstructor
-@Slf4j
+//@Slf4j
 public class EmployeeRestController {
 
 	private static final Logger log = LoggerFactory.getLogger(EmployeeRestController.class);
@@ -35,9 +36,15 @@ public class EmployeeRestController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) {
+	public ResponseEntity<ApiResponse<EmployeeDto>> getEmployeeById(@PathVariable Long id) {
 		log.info("Received request: GET /api/employees/{}", id);
-		return ResponseEntity.ok(employeeService.getEmployeeById(id));
+		
+		EmployeeDto employee = employeeService.getEmployeeById(id);
+
+		ApiResponse<EmployeeDto> response = ApiResponse.<EmployeeDto>builder().success(true)
+				.message("Employee fetched successfully").data(employee).build();
+
+		return ResponseEntity.ok(response);
 	}
 
 	@PostMapping

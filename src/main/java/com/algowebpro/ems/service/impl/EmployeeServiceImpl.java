@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.algowebpro.common.exception.ResourceNotFoundException;
 import com.algowebpro.common.utils.MappingUtil;
 import com.algowebpro.ems.dto.EmployeeDto;
 import com.algowebpro.ems.entity.Employee;
@@ -41,11 +42,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public EmployeeDto getEmployeeById(Long id) {
 
 		log.info("Fetching employee with ID: {}", id);
-
-		Employee employee = employeeRepository.findById(id).orElseThrow(() -> {
-			log.error("Employee not found with ID: {}", id);
-			return new RuntimeException("Employee not found with id: " + id);
-		});
+		
+		Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
 
 		return mappingUtil.convertToDto(employee, EmployeeDto.class);
 	}
