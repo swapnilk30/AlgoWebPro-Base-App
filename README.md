@@ -5,18 +5,21 @@
 src/main/java/com/algowebpro/
 │
 ├── config/
-│			ModelMapperConfig.java
-│			SwaggerConfig.java
+│			   ModelMapperConfig.java
+│			   SwaggerConfig.java
 │
 ├── common/
 │    ├── constants/
-│			AppConstants.java
-│	 ├── utils/
-│			MappingUtil.java
-│	 ├── exception/
+│	  │	   AppConstants.java
+│	  ├── utils/
+│	  │	   MappingUtil.java
+│    ├── response/
+│    │      ErrorResponse.java
+│    │      ApiResponse.java
+│    │      SuccessResponse.java
+│	  ├── exception/
 │    │      GlobalExceptionHandler.java
 │    │      ResourceNotFoundException.java
-│
 │
 ├── security/
 │    ├── config/
