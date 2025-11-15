@@ -153,8 +153,42 @@ GET /api/v1/employees?pageNumber=0&pageSize=10&sortBy=name&sortDir=asc
 ```
 
 ---
+---
 
-## ✅ **3. Bootstrap UI Integration**
+## ✅ 3. Validation Implementation
+
+Added field-level and custom validations using Jakarta Validation.
+
+### Included:
+
+* Required fields with:
+
+  * `@NotBlank`
+  * `@NotNull`
+  * `@Email`
+  * `@Size`
+* Custom annotation:
+
+  * `@PhoneNumber` → Validates international number format
+* Global handling of validation exceptions
+* ClassCastException safe validation error mapping
+
+### Example Error Response
+
+```json
+{
+  "message": "Validation failed",
+  "errors": {
+    "email": "Invalid email format",
+    "phone": "Invalid phone number format"
+  }
+}
+```
+
+---
+
+
+## ✅ **4. Bootstrap UI Integration**
 
 Fully integrated **Bootstrap 5.3.3** for responsive UI development.
 
