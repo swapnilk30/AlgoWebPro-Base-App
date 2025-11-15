@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.algowebpro.common.response.PageableResponse;
 import com.algowebpro.ems.dto.EmployeeDto;
 import com.algowebpro.ems.service.EmployeeService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -69,8 +71,12 @@ public class EmployeeRestController {
 	}
 
 	@PostMapping
-	public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto) {
+	public ResponseEntity<ApiResponse<EmployeeDto>> createEmployee(@RequestBody @Valid EmployeeDto employeeDto) {
 		log.info("Received request: POST /api/employees -> {}", employeeDto.getFirstName());
-		return ResponseEntity.ok(employeeService.createEmployee(employeeDto));
+
+		EmployeeDto created = employeeService.createEmployee(employeeDto);
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.<EmployeeDto>builder().success(true)
+				.message("Employee created successfully").data(created).build());
 	}
 }
