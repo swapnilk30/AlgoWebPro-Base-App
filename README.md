@@ -17,6 +17,7 @@ src/main/java/com/algowebpro/
 │    │      ErrorResponse.java
 │    │      ApiResponse.java
 │    │      SuccessResponse.java
+|    |      PageableResponse.java
 │	  ├── exception/
 │    │      GlobalExceptionHandler.java
 │    │      ResourceNotFoundException.java
