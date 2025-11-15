@@ -10,9 +10,9 @@ src/main/java/com/algowebpro/
 │
 ├── common/
 │   ├── validation/
-│   │
-│   │
-│   │
+│   │      PhoneNumber.java
+│   │      ValidEmail.java
+│   │      StrongPassword.java
 │   ├── constants/
 │	  │	     AppConstants.java
 │	  ├── utils/
