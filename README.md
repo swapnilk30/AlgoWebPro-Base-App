@@ -1,3 +1,48 @@
+
+# ✅ **Project Structure**
+
+```
+src/main/java/com/algowebpro/
+│
+├── config/
+│			ModelMapperConfig.java
+│			SwaggerConfig.java
+│
+├── common/
+│    ├── constants/
+│			AppConstants.java
+│	 ├── utils/
+│			MappingUtil.java
+│	 ├── exception/
+│    │      GlobalExceptionHandler.java
+│    │      ResourceNotFoundException.java
+│
+│
+├── security/
+│    ├── config/
+│    │      SecurityConfig.java
+│    │      AuthenticationProviderConfig.java
+│    │
+│    ├── filter/
+│    │      JwtAuthenticationFilter.java
+│    │
+│    ├── service/
+│    │      JwtService.java
+│    │      CustomUserDetailsService.java
+│    │
+│    ├── model/
+│    │      AuthRequest.java
+│    │      AuthResponse.java
+│    │
+│    └── util/
+│           JwtUtils.java  (optional)
+│
+├── ums/
+│
+└── ems/
+```
+
+
 ---
 
 ### 🧩 Branch Merge Workflow (bootstrap-ui → master)
