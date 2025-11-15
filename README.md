@@ -9,6 +9,10 @@ src/main/java/com/algowebpro/
 │			   SwaggerConfig.java
 │
 ├── common/
+│   ├── validation/
+│   │
+│   │
+│   │
 │   ├── constants/
 │	  │	     AppConstants.java
 │	  ├── utils/
