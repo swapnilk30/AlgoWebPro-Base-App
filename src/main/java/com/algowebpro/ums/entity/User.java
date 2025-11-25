@@ -47,7 +47,7 @@ public class User {
 	private String password;
 
 	@Builder.Default
-	private Boolean enabled = true;
+	private boolean enabled = true;
 
 	@Enumerated(EnumType.STRING)
 	@Builder.Default

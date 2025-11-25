@@ -136,10 +136,6 @@ public class UserServiceImpl implements UserService {
 			existingUser.setProvider(userDto.getProvider());
 		}
 
-		if (userDto.getEnabled() != null) {
-			existingUser.setEnabled(userDto.getEnabled());
-		}
-
 		if (userDto.getPassword() != null) {
 			existingUser.setPassword(userDto.getPassword());
 		}

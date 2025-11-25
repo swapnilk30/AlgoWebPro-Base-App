@@ -27,7 +27,7 @@ public class UserDto {
 
 	private String password;
 
-	private Boolean enabled = true;
+	private boolean enabled = true;
 
 	private Provider provider = Provider.LOCAL;
 
