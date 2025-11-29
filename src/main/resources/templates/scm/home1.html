@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Contact Manager</title>
+    <link rel="stylesheet" th:href="@{/tailwind/css/output.css}">
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="max-w-3xl mx-auto mt-10 bg-white shadow-md p-8 rounded">
+        <h1 class="text-4xl font-bold text-blue-600 mb-3">Smart Contact Manager</h1>
+
+        <p class="text-xl text-gray-700 mb-4" th:text="${message}">
+            Welcome to Smart Contact Manager!
+        </p>
+
+        <p class="text-gray-600 mb-6">
+            Manage your personal and professional contacts easily, securely, and efficiently.
+        </p>
+
+        <div class="flex gap-6">
+            <a th:href="@{/scm/about}" class="text-blue-600 underline">About</a>
+            <a th:href="@{/scm/services}" class="text-blue-600 underline">Services</a>
+        </div>
+    </div>
+
+</body>
+</html>

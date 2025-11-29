@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="parent(content,title,script)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-th-replace="${title}">Smart Contact Manager</title>
+    <!-- Change this -->
+    <!-- <link rel="stylesheet" th:href="@{/tailwind/css/output.css}">-->
+    <!-- To this -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Common Header -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+    <ul class="flex space-x-6 p-4">
+        <li>
+            <a th:href="@{/scm/home}" class="hover:text-blue-200 font-medium">Home</a>
+        </li>
+        <li>
+            <a th:href="@{/scm/services}" class="hover:text-blue-200 font-medium">Services</a>
+        </li>
+        <li>
+            <a th:href="@{/scm/about}" class="hover:text-blue-200 font-medium">About</a>
+        </li>
+    </ul>
+    </nav>
+
+
+    
+
+     <!-- Main Content-->
+      
+     <div class="">
+        <section data-th-replace="${content}"></section>
+     </div>
+    
+     
+
+    <!-- Common Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-6">
+            <p class="text-sm text-center">&copy; 2024 Smart Contact Manager. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <th:block data-th-replace="${script}"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "algowebpro-base-app",
+  "version": "1.0.0",
+  "description": "``` src/main/java/com/algowebpro/ │ ├── config/ │\t\t\t   ModelMapperConfig.java │\t\t\t   SwaggerConfig.java │ ├── common/ │   ├── validation/ │   │      PhoneNumber.java │   │      ValidEmail.java │   │      StrongPassword.java │   ├── constants/ │\t  │\t     AppConstants.java │\t  ├── utils/ │\t  │\t     MappingUtil.java │   ├── response/ │   │      ErrorResponse.java │   │      ApiResponse.java │   │      SuccessResponse.java |   |      PageableResponse.java │\t  ├── exception/ │   │      GlobalExceptionHandler.java │   │      ResourceNotFoundException.java │ ├── security/ │    ├── config/ │    │      SecurityConfig.java │    │      AuthenticationProviderConfig.java │    │ │    ├── filter/ │    │      JwtAuthenticationFilter.java │    │ │    ├── service/ │    │      JwtService.java │    │      CustomUserDetailsService.java │    │ │    ├── model/ │    │      AuthRequest.java │    │      AuthResponse.java │    │ │    └── util/ │           JwtUtils.java  (optional) │ ├── ums/ │ └── ems/ │ │ ├── docs/ │   ├── notes/ │   │    ├── spring-boot-basics.md │   │    ├── jwt-authentication.md │   │    ├── exception-handling.md │   │    ├── lombok-builder.md │   │    └── security-config.md │   │ │   └── architecture/ │        ├── project-structure.md │        ├── sequence-diagrams.md │        └── api-flow.md ```",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.18"
+  }
+}
