@@ -5,21 +5,15 @@ import java.util.stream.Collectors;
 
 import javax.crypto.SecretKey;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.stereotype.Service;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.Keys;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
-@RequiredArgsConstructor
+//@Service
+//@RequiredArgsConstructor
 @Slf4j
 public class JwtService {
+	
+	/*
 
 	@Value("${jwt.secret}")
 	private String jwtSecret;
@@ -35,9 +29,9 @@ public class JwtService {
 		return Keys.hmacShaKeyFor(keyBytes);
 	}
 
-	/**
-	 * Generate JWT token from Authentication object
-	 */
+	
+//	Generate JWT token from Authentication object
+	 
 	public String generateToken(Authentication authentication) {
 		
 		UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
@@ -52,10 +46,12 @@ public class JwtService {
 		String token = Jwts.builder().subject(Long.toString(userPrincipal.getId()))
 				.claim("username", userPrincipal.getUsername()).claim("email", userPrincipal.getEmail())
 				.claim("roles", roles).issuedAt(now).expiration(expiryDate).signWith(getSigningKey()).compact();
-		*/
+		
 
 		log.debug("Generated JWT token for user: {}", userPrincipal.getUsername());
 		return null;
 	}
+	
+	*/
 
 }

@@ -19,11 +19,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/v1/auth")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Slf4j
 public class AuthController {
 
-	private final AuthService authService;
+	//private final AuthService authService;
 
 	/**
 	 * Login endpoint POST /api/v1/auth/login
@@ -33,7 +33,7 @@ public class AuthController {
 
 		log.info("POST /api/auth/login - Login request for: {}", loginRequest.getUsernameOrEmail());
 
-		AuthResponse response = authService.login(loginRequest);
+		//AuthResponse response = authService.login(loginRequest);
 
 		// log.info("Login successful for user: {}", response.getUsername());
 
@@ -49,7 +49,7 @@ public class AuthController {
 			@Valid @RequestBody LoginByEmailRequest loginRequest) {
 		log.info("POST /api/auth/login/email - Login request for email: {}", loginRequest.getEmail());
 
-		AuthResponse response = authService.loginByEmail(loginRequest);
+		//AuthResponse response = authService.loginByEmail(loginRequest);
 
 		//log.info("Login by email successful for user: {}", response.getUsername());
 		//return ResponseEntity.ok(ApiResponse.success("Login successful", response));
@@ -63,7 +63,7 @@ public class AuthController {
 	public ResponseEntity<ApiResponse<AuthResponse>> register(@Valid @RequestBody RegisterRequest registerRequest) {
 		log.info("POST /api/auth/register - Registration request for: {}", registerRequest.getUsername());
 
-		AuthResponse response = authService.register(registerRequest);
+		//AuthResponse response = authService.register(registerRequest);
 
 		// log.info("Registration successful for user: {}", response.getUsername());
 		// return

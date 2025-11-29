@@ -2,24 +2,22 @@ package com.algowebpro.security.service;
 
 import java.util.Collection;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class UserPrincipal implements UserDetails{
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+public class UserPrincipal{// implements UserDetails{
 	
 	private String username;
 	private String email;
 	private String password;
 	
-	private Collection<? extends GrantedAuthority> authorities;
+/*	private Collection<? extends GrantedAuthority> authorities;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -35,5 +33,7 @@ public class UserPrincipal implements UserDetails{
 	public String getUsername() {
 		return username;
 	}
+	
+	*/
 
 }

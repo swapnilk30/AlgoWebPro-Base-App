@@ -1,6 +1,5 @@
 package com.algowebpro.security.auth.service.impl;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.algowebpro.common.exception.BadRequestException;
@@ -16,14 +15,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Slf4j
-public class AuthServiceImpl implements AuthService {
+public class AuthServiceImpl {//implements AuthService {
 
-	private final UserService userService;
-	private final PasswordEncoder passwordEncoder;
+	//private final UserService userService;
+	//private final PasswordEncoder passwordEncoder;
 
-	@Override
+/*	@Override
 	public AuthResponse login(LoginRequest loginRequest) {
 		// TODO Auto-generated method stub
 		return null;
@@ -64,5 +63,6 @@ public class AuthServiceImpl implements AuthService {
 			throw new BadRequestException("Email is already in use!");
 		}
 	}
+	*/
 
 }

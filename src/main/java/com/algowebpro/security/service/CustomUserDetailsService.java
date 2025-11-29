@@ -3,11 +3,6 @@ package com.algowebpro.security.service;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.algowebpro.ums.entity.User;
@@ -16,14 +11,14 @@ import com.algowebpro.ums.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 @Slf4j
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService{// implements UserDetailsService {
 
-	private final UserRepository userRepository;
+	//private final UserRepository userRepository;
 
-	@Override
+/*	@Override
 	public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
 
 		log.debug("Loading user by username or email: {}", usernameOrEmail);
@@ -47,5 +42,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 				.password(user.getPassword()).authorities(authorities).accountExpired(false).accountLocked(false)
 				.credentialsExpired(false).disabled(!user.isEnabled()).build();
 	}
+	
+	*/
 
 }
