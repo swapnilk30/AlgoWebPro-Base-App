@@ -1,6 +1,7 @@
 package com.algowebpro.scm.service.impl;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,17 @@ public class ScmUserServiceImpl implements ScmUserService{
 
     @Override
     public ScmUser saveScmUser(ScmUser scmUser) {
+
+		String userId = UUID.randomUUID().toString();
+		scmUser.setUserId(userId);
+
+		// Provide safe defaults
+		if (scmUser.getProfilePic() == null) {
+			scmUser.setProfilePic("default.png");
+		}
+
+
+
 		return scmUserRepository.save(scmUser);
 	}
 

@@ -50,7 +50,8 @@ public class ScmUser {
     private boolean phoneVerified = false;
 
     //GOOGLE , FACEBOOK, GITHUB
-    //@Enumerated(EnumType.STRING)
+    @Builder.Default
+    @Enumerated(EnumType.STRING)
     private Providers provider = Providers.SELF;
     private String providerUserId;
 

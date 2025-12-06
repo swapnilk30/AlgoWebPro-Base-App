@@ -2,6 +2,7 @@ package com.algowebpro.scm.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.algowebpro.scm.entity.ScmUser;
+import com.algowebpro.scm.enums.MessageType;
 import com.algowebpro.scm.forms.ScmUserForm;
+import com.algowebpro.scm.helper.Message;
+import com.algowebpro.scm.service.ScmUserService;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 @Controller
@@ -22,6 +27,8 @@ public class ScmViewController {
 
     private static final Logger log = LoggerFactory.getLogger(ScmViewController.class);
 
+    @Autowired
+    private ScmUserService scmUserService;
 
     @GetMapping("/home")
     public String home(Model model) {
@@ -81,9 +88,38 @@ public class ScmViewController {
     }
 
     @PostMapping("/signup")
-    public String registerUser(@ModelAttribute ScmUserForm scmUserForm) {
+    public String registerUser(@Valid @ModelAttribute ScmUserForm scmUserForm,BindingResult result,HttpSession session,Model model) {
 
         log.info("Smart Contact Manager: registerUser()  accessed");
+
+        if (result.hasErrors()) {
+            // Handle validation errors
+            log.warn("Validation errors found: {}", result.getAllErrors());
+            model.addAttribute("scmUserForm", scmUserForm);
+            model.addAttribute("pageTitle", "Sign Up - Smart Contact Manager");
+            return "scm/auth/signup";
+        }
+    
+
+        // Convert form -> entity (could be moved to a mapper class)s
+        ScmUser scmUser = ScmUser.builder()
+        .name(scmUserForm.getName())
+        .email(scmUserForm.getEmail())
+        .password(scmUserForm.getPassword())
+        .about(scmUserForm.getAbout())
+        .phoneNumber(scmUserForm.getPhoneNumber())
+        .build();
+
+        log.debug("Mapped ScmUserForm to ScmUser: name={}, email={}, phone={}",
+            scmUser.getName(), scmUser.getEmail(), scmUser.getPhoneNumber());
+
+        ScmUser savedScmUser = scmUserService.saveScmUser(scmUser);
+        log.info("New user registered successfully with userId={}", savedScmUser.getUserId());
+
+        Message message = Message.builder()
+        .content("New user registered successfully !!")
+        .messageType(MessageType.green).build();
+        session.setAttribute("message",message);
 
         return "redirect:/scm/signup";
     }
