@@ -8,43 +8,37 @@
     <!-- <link rel="stylesheet" th:href="@{/tailwind/css/output.css}">-->
     <!-- To this -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Common Header -->
-    <nav class="bg-blue-600 text-white shadow-lg">
-    <ul class="flex space-x-6 p-4">
-        <li>
-            <a th:href="@{/scm/home}" class="hover:text-blue-200 font-medium">Home</a>
-        </li>
-        <li>
-            <a th:href="@{/scm/services}" class="hover:text-blue-200 font-medium">Services</a>
-        </li>
-        <li>
-            <a th:href="@{/scm/about}" class="hover:text-blue-200 font-medium">About</a>
-        </li>
-    </ul>
-    </nav>
-
-
+    <!-- Header Section -->
+    <!-- <div th:replace="scm/fragments/header :: header"></div> -->
     
+    <!-- Navigation Section -->
+    <div th:replace="~{scm/fragments/navigation :: navigation}"></div>
+
 
      <!-- Main Content-->
       
      <div class="">
         <section data-th-replace="${content}"></section>
      </div>
-    
      
+     
+    <!-- Footer Section -->
+   <!--  <div th:replace="scm/fragments/footer :: footer"></div> -->
 
-    <!-- Common Footer -->
+
+    <!-- Common Footer 
     <footer class="bg-gray-800 text-white mt-12">
         <div class="container mx-auto px-4 py-6">
             <p class="text-sm text-center">&copy; 2024 Smart Contact Manager. All rights reserved.</p>
         </div>
-    </footer>
+    </footer>-->
 
 
     <th:block data-th-replace="${script}"></th:block>
-
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
 </html>

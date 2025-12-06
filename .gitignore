@@ -50,3 +50,7 @@ build/
 application-*.yml
 application-*.yaml
 application-*.properties
+
+node_modules/
+src./
+package-lock.json
