@@ -6,11 +6,17 @@ import com.algowebpro.scm.entity.ScmUser;
 
 public interface ScmUserService {
 	
-	ScmUser registerUser(ScmUser scmUser);
 
     ScmUser saveScmUser(ScmUser scmUser);
 
-    ScmUser getScmUserById(String ScmUserId);
+    Optional<ScmUser> getScmUserById(String scmUserId);
+
+    ScmUser updateUser(String id, ScmUser scmUser);
+
+    void deleteUser(String id);
+
+
+	ScmUser registerUser(ScmUser scmUser);
     
     boolean emailExists(String email);
     

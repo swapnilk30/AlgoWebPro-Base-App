@@ -16,15 +16,16 @@ public class ScmUserServiceImpl implements ScmUserService{
 
     @Override
     public ScmUser saveScmUser(ScmUser scmUser) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveScmUser'");
-    }
+		return scmUserRepository.save(scmUser);
+	}
 
-    @Override
-    public ScmUser getScmUserById(String ScmUserId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getScmUserById'");
-    }
+	@Override
+	public Optional<ScmUser> getScmUserById(String scmUserId) {
+
+		return scmUserRepository.findById(scmUserId);
+	}
+
+   
 
 	@Override
 	public ScmUser registerUser(ScmUser scmUser) {
@@ -42,5 +43,33 @@ public class ScmUserServiceImpl implements ScmUserService{
 	public Optional<ScmUser> findByEmail(String email) {
 		return scmUserRepository.findByEmail(email);
 	}
+
+	@Override
+	public ScmUser updateUser(String id, ScmUser scmUser) {
+		ScmUser existingUser = scmUserRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("ScmUser not found"));
+
+        // Update fields (example)
+        existingUser.setName(scmUser.getName());
+        existingUser.setEmail(scmUser.getEmail());
+        //existingUser.setPhone(scmUser.getPhone());
+        //existingUser.setRole(scmUser.getRole());
+        // Add any other fields that should be updated
+
+        return scmUserRepository.save(existingUser);
+	}
+
+	@Override
+	public void deleteUser(String id) {
+
+		if (!scmUserRepository.existsById(id)) {
+            throw new RuntimeException("ScmUser not found");
+        }
+        scmUserRepository.deleteById(id);
+	}
+
+
+
+
 
 }
