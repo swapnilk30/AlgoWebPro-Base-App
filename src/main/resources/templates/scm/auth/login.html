@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" th:replace="~{scm/base :: parent(~{:: #content},~{:: title},~{})}">
 <head>
-    <title>Login Page</title>
+    <title>Login - Smart Contact Manager</title>
 </head>
 <body>
     <div id="content">
-        <h1>welcome to Login page</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At reiciendis earum ab, illum pariatur eligendi recusandae doloremque adipisci soluta modi repellat saepe voluptates, culpa veniam magnam suscipit temporibus nobis facilis!</p>
+        <div class="grid grid-cols-12 mt-4">
+            <div class="col-span-4 md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
+            <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4">
+
+                <div
+                    class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+                    <div th:replace="~{scm/message::messagebox}"></div>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sign in to your account</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Join Smart Contact Manager to organize your
+                        contacts efficiently</p>
+
+                    <form th:action="@{'/scm/authenticate'}" method="post" class="mt-5">
+                        <!-- Flash Messages -->
+                        <div th:if="${param.error}" class="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg">
+                            Invalid email or password. Please try again.
+                        </div>
+                        <div th:if="${param.logout}" class="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-lg">
+                            You have been logged out successfully.
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Address
+                                *</label>
+                            <input name="email" type="email" id="email" 
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="name@example.com" required />
+                        </div>
+                       
+                        <div class="mb-3">
+                            <label for="password"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password *</label>
+                            <input name="password" type="password" id="password" 
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Create a strong password" required />
+                        </div>
+                       
+
+                        
+                        <!-- Submit Button -->
+                        <div class="mb-3 flex justify-center space-x-3">
+                            <button type="submit" class="px-3 py-2 rounded bg-gray-800 text-white">Sign in</button>
+                            <button type="reset" class="px-3 py-2 rounded bg-orange-800 text-white">Reset</button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="col-span-4"></div>
+        </div>
     </div>
 </body>
 </html>

@@ -30,6 +30,13 @@ public class ScmViewController {
     @Autowired
     private ScmUserService scmUserService;
 
+    @GetMapping({"", "/"})
+    public String index(Model model) {
+        log.info("Smart Contact Manager: Home page accessed");
+        model.addAttribute("message", "Welcome to Smart Contact Manager!");
+        return "redirect:/scm/home";
+    }
+
     @GetMapping("/home")
     public String home(Model model) {
         log.info("Smart Contact Manager: Home page accessed");

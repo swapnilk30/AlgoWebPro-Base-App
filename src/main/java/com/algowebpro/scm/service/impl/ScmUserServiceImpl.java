@@ -1,11 +1,14 @@
 package com.algowebpro.scm.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.algowebpro.common.constants.AppConstants;
 import com.algowebpro.scm.entity.ScmUser;
 import com.algowebpro.scm.repository.ScmUserRepository;
 import com.algowebpro.scm.service.ScmUserService;
@@ -14,6 +17,9 @@ public class ScmUserServiceImpl implements ScmUserService{
 	
 	@Autowired
     private ScmUserRepository scmUserRepository;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
     @Override
     public ScmUser saveScmUser(ScmUser scmUser) {
@@ -26,7 +32,9 @@ public class ScmUserServiceImpl implements ScmUserService{
 			scmUser.setProfilePic("default.png");
 		}
 
+		scmUser.setPassword(passwordEncoder.encode(scmUser.getPassword()));
 
+		scmUser.setRoleList(List.of(AppConstants.ROLE_USER));
 
 		return scmUserRepository.save(scmUser);
 	}

@@ -9,4 +9,8 @@ public class AppConstants {
     public static final String DATE_FORMAT = "yyyy-MM-dd";
     public static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static final String API_V1 = "/api/v1";
+
+    //Smart Contact Managment SCM
+    public static final String ROLE_USER = "ROLE_USER";
+
 }
