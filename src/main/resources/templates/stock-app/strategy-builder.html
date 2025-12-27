@@ -1,16 +1,71 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{stock-app/layouts/stock-layout}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{stock-app/layouts/stock-layout}">
+
 <head>
-    <title>Srategy-Builder</title>
+	<title>Srategy-Builder</title>
+
+	
 </head>
 
 
 <body>
-    <div layout:fragment="content">
-        <!-- Your OPSTRA-style content -->
-        <h1>Startegy-builder page!!</h1>
-    </div>
+	<div layout:fragment="content">
+
+		<!-- Your OPSTRA-style content -->
+		<h1>Startegy-builder page!!</h1>
+
+		<div>
+			<!-- Segment Selection -->
+			<label for="segment">Select Segment</label>
+			<select id="segment" onchange="handleSegmentChange()">
+				<option value="futures">Futures</option>
+				<option value="options">Options</option>
+			</select>
+
+			<!-- Expiry -->
+			<label for="expiry">Select Expiry</label>
+			<select id="expiry">
+				<option value="">-- Select Expiry --</option>
+				<option value="2024-01-25">25 Jan 2024</option>
+				<option value="2024-02-29">29 Feb 2024</option>
+			</select>
+
+			<!-- Options Only Fields -->
+			<div id="optionsFields" class="hidden">
+				<!-- Option Strike -->
+				<label for="strike">Select Option Strike</label>
+				<select id="strike">
+					<option value="">-- Select Strike --</option>
+					<option value="18000">18000</option>
+					<option value="18500">18500</option>
+					<option value="19000">19000</option>
+				</select>
+
+				<!-- Option Type -->
+				<label for="optionType">Select Option Type</label>
+				<select id="optionType">
+					<option value="">-- Select Type --</option>
+					<option value="CE">Call (CE)</option>
+					<option value="PE">Put (PE)</option>
+				</select>
+			</div>
+		</div>
+
+	</div>
+
+	<script>
+		function handleSegmentChange() {
+			const segment = document.getElementById("segment").value;
+			const optionsFields = document.getElementById("optionsFields");
+
+			if (segment === "options") {
+				optionsFields.classList.remove("hidden");
+			} else {
+				optionsFields.classList.add("hidden");
+			}
+		}
+	</script>
 </body>
+
 </html>
