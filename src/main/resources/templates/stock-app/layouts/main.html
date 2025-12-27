@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <th:block layout:insert="~{stock-app/fragments/head :: head(~{::title})}"/>
+</head>
+
+<body>
+
+<!-- Header -->
+<th:block layout:insert="~{stock-app/fragments/header :: header}"/>
+
+<!-- Page Content -->
+<main layout:fragment="content">
+    <!-- Child pages inject content here -->
+</main>
+
+<!-- Footer -->
+<th:block layout:insert="~{stock-app/fragments/footer :: footer}"/>
+
+</body>
+</html>

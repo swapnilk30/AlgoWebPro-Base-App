@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title layout:title-pattern="$CONTENT_TITLE | Stock App">Stock App</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+
+    <!-- Page specific CSS -->
+    <th:block layout:fragment="styles"></th:block>
+</head>
+
+<body class="bg-light">
+
+<!-- ===== Header / Navbar ===== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">StockApp</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/dashboard}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/strategy}">Strategy Builder</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== Main Layout ===== -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-2 d-none d-md-block bg-white border-end min-vh-100">
+            <div class="list-group list-group-flush mt-3">
+                <a th:href="@{/dashboard}" class="list-group-item list-group-item-action">
+                    Dashboard
+                </a>
+                <a th:href="@{/strategy}" class="list-group-item list-group-item-action">
+                    Strategy Builder
+                </a>
+                <a th:href="@{/backtest}" class="list-group-item list-group-item-action">
+                    Backtesting
+                </a>
+                <a th:href="@{/reports}" class="list-group-item list-group-item-action">
+                    Reports
+                </a>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="col-md-10 ms-sm-auto px-4 py-4">
+            <!-- Page Content -->
+            <div layout:fragment="content">
+                <!-- Child templates inject content here -->
+            </div>
+        </main>
+
+    </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="text-center py-3 border-top bg-white">
+    <small class="text-muted">
+        © 2025 Stock App. All rights reserved.
+    </small>
+</footer>
+
+<!-- Global JS -->
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+<!-- Page specific JS -->
+<th:block layout:fragment="scripts"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title layout:title-pattern="$CONTENT_TITLE | Paper Trading App">
+        Paper Trading App
+    </title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+    <h1>📈 Paper Trading Dashboard</h1>
+    <nav>
+        <a th:href="@{/}">Home</a> |
+        <a th:href="@{/portfolio}">Portfolio</a> |
+        <a th:href="@{/orders}">Orders</a> |
+        <a th:href="@{/market}">Market</a>
+    </nav>
+    <hr>
+</header>
+
+<!-- Main Content -->
+<main layout:fragment="content">
+    <!-- Page-specific content goes here -->
+</main>
+
+<!-- Footer -->
+<footer>
+    <hr>
+    <p>© 2025 Paper Trading App | Simulated trades only</p>
+</footer>
+
+</body>
+</html>
