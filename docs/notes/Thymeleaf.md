@@ -391,3 +391,147 @@ Child page = fills holes
 5. Fragment reuse (header/sidebar)
 
 If you want, I can **draw a flow diagram** or explain with **request → response lifecycle** next.
+
+
+On a **Thymeleaf page**, you write JavaScript functions almost the same way as in normal HTML — the key difference is **how you inject server-side values** using Thymeleaf.
+
+Below are the **common and correct patterns**, step by step 👇
+
+---
+
+## 1. Basic JavaScript function in a Thymeleaf HTML page
+
+You can write a normal JS function inside `<script>` tags:
+
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Example</title>
+</head>
+<body>
+
+<button onclick="sayHello()">Click me</button>
+
+<script>
+    function sayHello() {
+        alert("Hello from JavaScript!");
+    }
+</script>
+
+</body>
+</html>
+```
+
+✅ This works exactly like standard HTML.
+
+---
+
+## 2. Using Thymeleaf values **inside JavaScript**
+
+To safely use Thymeleaf variables in JavaScript, **enable JavaScript inline mode**:
+
+```html
+<script th:inline="javascript">
+    function showName() {
+        let name = [[${username}]];
+        alert("Hello " + name);
+    }
+</script>
+```
+
+### Controller example (Spring Boot)
+
+```java
+model.addAttribute("username", "Alex");
+```
+
+🟢 `[[...]]` is used for **JavaScript expressions**
+🟢 Thymeleaf automatically adds quotes if needed
+
+---
+
+## 3. Passing Thymeleaf values as function parameters
+
+### HTML
+
+```html
+<button th:onclick="showAge([[${age}]])">Show Age</button>
+```
+
+### JavaScript
+
+```html
+<script>
+    function showAge(age) {
+        alert("Age is " + age);
+    }
+</script>
+```
+
+---
+
+## 4. Using Thymeleaf objects or lists in JavaScript
+
+```html
+<script th:inline="javascript">
+    let user = [[${user}]];
+    console.log(user.name);
+    console.log(user.email);
+</script>
+```
+
+Thymeleaf automatically converts objects to **JSON**.
+
+---
+
+## 5. External JavaScript file with Thymeleaf data (best practice)
+
+### HTML
+
+```html
+<script th:inline="javascript">
+    const userId = [[${userId}]];
+</script>
+
+<script src="/js/app.js"></script>
+```
+
+### app.js
+
+```javascript
+function loadUser() {
+    console.log(userId);
+}
+```
+
+🟡 Thymeleaf **cannot run inside external JS files**, so pass data first.
+
+---
+
+## Common mistakes ❌
+
+* ❌ Using `${}` directly in JS without `th:inline="javascript"`
+* ❌ Trying to use Thymeleaf inside `.js` files
+* ❌ Forgetting `[[ ]]` for JS expressions
+
+---
+
+## When to use which syntax
+
+| Use case       | Syntax               |
+| -------------- | -------------------- |
+| JS value       | `[[${value}]]`       |
+| HTML text      | `th:text="${value}"` |
+| HTML attribute | `th:onclick="..."`   |
+
+---
+
+If you want, tell me:
+
+* Are you using **Spring Boot**?
+* Do you want to pass **arrays, objects, or forms**?
+* Inline JS or external JS?
+
+I can tailor the example exactly to your case 🙂
+
